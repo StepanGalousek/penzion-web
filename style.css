@@ -1,1 +1,206 @@
-/* Add styles here */
+/* --- Základní nastavení & Proměnné --- */
+:root {
+    --font-serif: 'Playfair Display', serif;
+    --font-sans: 'Montserrat', sans-serif;
+    --color-text-light: #ffffff;
+    --color-text-dark: #333333;
+    --color-background: #fdfdfd;
+    --header-bg: transparent;
+    --header-bg-open: #ffffff;
+    --header-text: var(--color-text-light);
+    --header-text-open: var(--color-text-dark);
+    --color-accent: #5A7C49; /* Nová elegantní zelená */
+}
+
+body {
+    font-family: var(--font-sans);
+    color: var(--color-text-dark);
+    background-color: var(--color-background);
+    margin: 0;
+    line-height: 1.6;
+}
+
+/* --- Nadpisy --- */
+main h1, main h2, main h3 {
+    color: var(--color-accent);
+}
+
+
+/* --- Navigace --- */
+.site-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 2rem 3rem;
+    z-index: 100;
+    background-color: var(--header-bg);
+    transition: background-color 0.4s ease;
+}
+
+.site-header.open {
+    background-color: var(--header-bg-open);
+}
+
+.site-header--solid {
+    background-color: var(--header-bg-open);
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.site-header--solid .logo,
+.site-header--solid .menu-toggle {
+    color: var(--header-text-open);
+}
+
+.nav-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    align-items: center;
+    width: 100%;
+}
+
+.nav-left { display: flex; justify-content: flex-start; }
+.nav-center { text-align: center; }
+.nav-right { display: flex; justify-content: flex-end; }
+
+.logo {
+    font-family: var(--font-serif);
+    font-size: 1.2rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    color: var(--header-text);
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: color 0.3s ease;
+}
+
+.menu-toggle {
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    color: var(--header-text);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+    transition: color 0.3s ease;
+    z-index: 101; 
+}
+
+.site-header.open .logo, 
+.site-header.open .menu-toggle {
+    color: var(--header-text-open);
+}
+
+.dropdown-menu {
+    position: absolute;
+    left: 0;
+    top: 100%;
+    width: 100%;
+    background-color: var(--header-bg-open);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem 0;
+    border-top: 1px solid #f0f0f0;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: transform 0.5s ease-in-out, opacity 0.4s ease, visibility 0s 0.5s;
+}
+
+.site-header.open .dropdown-menu {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+    transition-delay: 0s;
+}
+
+.dropdown-menu a { color: var(--header-text-open); text-decoration: none; text-transform: uppercase; margin: 0 1.5rem; transition: opacity 0.3s ease; }
+.dropdown-menu a:hover { opacity: 0.7; }
+
+/* --- Obecné třídy --- */
+.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url(https://picsum.photos/seed/main-hero/1920/1280) no-repeat center center/cover}
+.text-section{padding:8rem 2rem;text-align:center}
+.page-title-section{padding-top:10rem}
+.text-container{max-width:650px;margin:0 auto}
+.text-section h1,.text-section h2{font-family:var(--font-serif);font-size:3.5rem;font-weight:700;margin-bottom:1.5rem}
+.text-section p{font-size:1.1rem;line-height:1.8}
+.gallery-section{padding:2rem 3rem 6rem}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}.gallery-item img{width:100%;height:auto;object-fit:cover;display:block;margin-bottom:2rem}.gallery-item a{display:block;text-decoration:none}.gallery-item-content{text-align:center;padding:0 1rem}.gallery-item-content h2{font-family:var(--font-serif);font-size:2.2rem;font-weight:700;margin-bottom:1rem}.gallery-item-content h2 a{text-decoration:none;color:inherit}.gallery-item-content p{font-size:1rem;line-height:1.7;max-width:450px;margin-left:auto;margin-right:auto;color:var(--color-text-dark)}
+.room-list{padding:0 3rem 6rem}.room-section{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:6rem}.room-section:nth-child(even) .room-image{order:2}.room-image img{width:100%;height:auto;display:block}.room-description h3{font-family:var(--font-serif);font-size:2.8rem;font-weight:700;margin-bottom:1.5rem}.room-description p{font-size:1rem;line-height:1.8;margin-bottom:2rem}.room-features{list-style:none;padding:0;margin:0 0 2.5rem}.room-features li{font-size:1rem;margin-bottom:.8rem;padding-left:2rem;position:relative}.room-features li::before{content:'\2713';position:absolute;left:0;top:0;color: var(--color-accent);font-weight:700}
+
+/* --- Tlačítka --- */
+.button {
+    display: inline-block;
+    background-color: var(--color-accent);
+    color: var(--color-text-light);
+    padding: 1rem 2.5rem;
+    text-decoration: none;
+    font-family: var(--font-sans);
+    font-weight: 500;
+    font-size: .9rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    border: 2px solid var(--color-accent);
+    transition: background-color .3s ease, color .3s ease;
+}
+.button:hover {
+    background-color: transparent;
+    color: var(--color-accent);
+}
+
+/* --- Stránka Kontakty --- */
+.contact-section { padding: 0 3rem 6rem; max-width: 1100px; margin-left: auto; margin-right: auto; }
+.contact-grid { display: grid; grid-template-columns: 1fr 1.2fr; gap: 5rem; align-items: start; }
+.contact-info-block h3 { font-family: var(--font-serif); font-size: 2rem; font-weight: 700; margin-bottom: 2rem; }
+.contact-info-item { margin-bottom: 2rem; }
+.contact-info-item h4 { font-family: var(--font-sans); font-size: 1rem; font-weight: 500; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.5rem; color: #888; }
+.contact-info-item p, .contact-info-item a { font-size: 1.1rem; line-height: 1.7; margin: 0; text-decoration: none; color: var(--color-text-dark); }
+.contact-info-item a:hover { color: var(--color-accent); }
+.contact-form .form-group { margin-bottom: 1.5rem; }
+.contact-form label { display: block; font-size: 0.9rem; margin-bottom: 0.5rem; color: #555; }
+.contact-form .form-control { width: 100%; padding: 1rem; font-family: var(--font-sans); font-size: 1rem; color: var(--color-text-dark); background-color: #f8f8f8; border: 1px solid #e0e0e0; border-radius: 4px; box-sizing: border-box; transition: border-color 0.3s ease, box-shadow 0.3s ease; }
+.contact-form .form-control:focus { outline: none; border-color: var(--color-accent); box-shadow: 0 0 0 2px rgba(90, 124, 73, 0.2); }
+.contact-form textarea.form-control { min-height: 150px; resize: vertical; }
+
+.map-section { padding: 6rem 0; text-align: center; }
+.map-placeholder { width: 100%; max-width: 1100px; height: 450px; background-color: #e9e9e9; display: flex; justify-content: center; align-items: center; color: #aaa; font-size: 1.2rem; margin: 0 auto; }
+
+/* --- Patička --- */
+.site-footer-main { background-color: var(--color-accent); color: #f0f0f0; padding: 5rem 3rem 2rem; font-size: 0.9rem; }
+.footer-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 3rem; max-width: 1200px; margin: 0 auto 4rem; }
+.footer-column h4 { font-family: var(--font-serif); font-size: 1.3rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--color-text-light); }
+.footer-column p, .footer-column ul { margin: 0; padding: 0; list-style: none; }
+.footer-column li { margin-bottom: 0.8rem; }
+.footer-column a { color: #f0f0f0; text-decoration: none; transition: color 0.3s ease; }
+.footer-column a:hover { color: rgba(255, 255, 255, 0.8); }
+.social-icons { display: flex; gap: 1.5rem; }
+.social-icons a { font-size: 1.4rem; }
+.footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.8rem; color: #e0e0e0; }
+
+/* --- Responzivní Design --- */
+@media (max-width: 992px) {
+    .gallery-grid { grid-template-columns: 1fr; gap: 4rem; }
+    .gallery-item img { margin-bottom: 1.5rem; }
+    .room-section { grid-template-columns: 1fr; gap: 2.5rem; }
+    .room-section:nth-child(even) .room-image { order: 0; }
+    .contact-grid { grid-template-columns: 1fr; gap: 4rem; }
+}
+
+@media (max-width: 768px) {
+    .site-header { padding: 1.5rem; }
+    .logo { font-size: 1rem; }
+    .dropdown-menu { flex-direction: column; padding: 1.5rem 0; }
+    .dropdown-menu a { margin: .8rem 0; }
+    .text-section { padding: 6rem 1.5rem; }
+    .text-section h1, .text-section h2 { font-size: 2.5rem; }
+    .gallery-item-content h2 { font-size: 2rem; }
+    .room-list { padding: 0 1.5rem 4rem; }
+    .room-description h3 { font-size: 2.3rem; }
+    .footer-container { grid-template-columns: 1fr; text-align: center; }
+    .social-icons { justify-content: center; }
+    .contact-section { padding: 0 1.5rem 4rem; }
+}

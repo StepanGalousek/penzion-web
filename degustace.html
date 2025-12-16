@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zelený Domeček Mikulov - Vítejte</title>
+    <title>Zelený Domeček Mikulov - Degustace</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,8 @@
     <script defer src="main.js"></script>
 </head>
 <body>
-
-    <!-- NAVIGACE -->
-    <header class="site-header">
+    <!-- NAVIGACE s pevnou hlavičkou -->
+    <header class="site-header site-header--solid">
         <div class="nav-container">
             <div class="nav-left">
                 <button class="menu-toggle">Menu</button>
@@ -36,52 +35,55 @@
     </header>
 
     <main>
-        <!-- 1. Hero sekce -->
-        <section class="hero">
-            <!-- Obrázek na pozadí bude řešen přes CSS -->
-        </section>
-
-        <!-- 2. Textová sekce -->
-        <section class="text-section">
+        <!-- 1. Titulek stránky -->
+        <section class="text-section page-title-section">
             <div class="text-container">
-                <h2>Zažijte Klid a Pohodu</h2>
+                <h1>Zážitkové Degustace</h1>
                 <p>
-                    V našem penzionu najdete útočiště před ruchem všedních dní. Nabízíme nejen komfortní ubytování, ale také nezapomenutelnou atmosféru, kde se tradice snoubí s moderním designem.
+                    Nechte se provést světem chutí a vůní v našem historickém sklepě. Degustace v Zeleném domečku není jen o ochutnávání vína. Je to zážitek, při kterém se setkáte s vinařem, nahlédnete do tajů výroby a objevíte příběhy, které se skrývají za každou etiketou.
                 </p>
             </div>
         </section>
 
-        <!-- 3. Sekce galerie s obsahem a prokliky -->
-        <section class="gallery-section">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <a href="ubytovani.html">
-                        <img src="https://picsum.photos/seed/gallery1/800/1000" alt="Interiér pokoje v penzionu">
-                    </a>
-                    <div class="gallery-item-content">
-                        <h2><a href="ubytovani.html">Ubytování</a></h2>
-                        <p>Naše pokoje jsou navrženy s citem pro detail a vaši maximální pohodu. Spojujeme moderní komfort s prvky, které odrážejí krásu okolní Pálavy. Každý pokoj je jedinečným prostorem, kde můžete nerušeně relaxovat po dni plném objevování Mikulova a načerpat novou energii v srdci jižní Moravy.</p>
-                    </div>
+        <!-- 2. Seznam typů degustací -->
+        <section class="room-list">
+            
+            <!-- Degustace 1: Řízená -->
+            <div class="room-section">
+                <div class="room-image">
+                    <img src="https://picsum.photos/seed/degustace1/1200/900" alt="Skupina lidí při řízené degustaci vína">
                 </div>
-                <div class="gallery-item">
-                    <a href="vinoteka.html">
-                        <img src="https://picsum.photos/seed/gallery2/800/1000" alt="Láhev vína a skleničky">
-                    </a>
-                    <div class="gallery-item-content">
-                        <h2><a href="vinoteka.html">Vinotéka</a></h2>
-                        <p>Vstupte do světa moravských vín v naší pečlivě zásobené vinotéce. Nabízíme exkluzivní výběr od malých lokálních vinařů, jejichž příběhy a lásku k řemeslu najdete v každé lahvi. Rádi vám poradíme s výběrem vína pro speciální příležitost i pro chvíle pohody. Objevujte s námi to nejlepší z regionu.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <a href="degustace.html">
-                        <img src="https://picsum.photos/seed/gallery3/800/1000" alt="Skupina lidí při degustaci vína">
-                    </a>
-                    <div class="gallery-item-content">
-                        <h2><a href="degustace.html">Degustace</a></h2>
-                        <p>Ponořte se do tajů vinařského umění s našimi řízenými degustacemi. Nechte se provést rozmanitostí chutí a vůní, které Pálava otiskla do svých vín. K dokonalému zážitku patří i párování s lokálními delikatesami, které podtrhnou charakter každého vzorku. Strávte ideální večer s přáteli a odneste si nezapomenutelné vzpomínky.</p>
-                    </div>
+                <div class="room-description">
+                    <h3>Řízená degustace s vinařem</h3>
+                    <p>Posaďte se a nechte se unášet vyprávěním samotného vinaře. Během této degustace ochutnáte 8 až 10 vzorků z naší aktuální produkce. Dozvíte se vše o pěstování révy na Pálavě, o procesech ve sklepě a o charakteru jednotlivých vín. Součástí je i malé občerstvení, které dokonale ladí s chutí vína.</p>
+                    <ul class="room-features">
+                        <li>8-10 vzorků vína</li>
+                        <li>Odborný výklad přímo od vinaře</li>
+                        <li>Drobné občerstvení (sýry, uzeniny)</li>
+                        <li>Délka cca 2-3 hodiny</li>
+                    </ul>
+                    <a href="#" class="button">Domluvit termín</a>
                 </div>
             </div>
+
+            <!-- Degustace 2: Individuální -->
+            <div class="room-section">
+                <div class="room-image">
+                    <img src="https://picsum.photos/seed/degustace2/1200/900" alt="Pár si užívá individuální ochutnávku vína">
+                </div>
+                <div class="room-description">
+                    <h3>Individuální ochutnávka</h3>
+                    <p>Chcete si vychutnat víno v naprostém soukromí a vlastním tempem? Připravíme pro vás selekci vín dle vašeho přání, kterou si můžete v klidu vychutnat v soukromí našeho salonku nebo na terase. K vínům vám nachystáme degustační sousto a veškeré potřebné informace, abyste si ochutnávku užili naplno.</p>
+                    <ul class="room-features">
+                        <li>Výběr vín na míru dle vašich preferencí</li>
+                        <li>Naprosté soukromí a klid</li>
+                        <li>Tištěné materiály s informacemi o vínech</li>
+                        <li>Flexibilní čas ochutnávky</li>
+                    </ul>
+                    <a href="#" class="button">Objednat ochutnávku</a>
+                </div>
+            </div>
+
         </section>
     </main>
 

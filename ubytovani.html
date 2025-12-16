@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Zelený Domeček Mikulov - Vítejte</title>
+    <title>Zelený Domeček Mikulov - Ubytování</title>
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,9 +13,8 @@
     <script defer src="main.js"></script>
 </head>
 <body>
-
-    <!-- NAVIGACE -->
-    <header class="site-header">
+    <!-- NAVIGACE s pevnou hlavičkou -->
+    <header class="site-header site-header--solid">
         <div class="nav-container">
             <div class="nav-left">
                 <button class="menu-toggle">Menu</button>
@@ -36,52 +35,55 @@
     </header>
 
     <main>
-        <!-- 1. Hero sekce -->
-        <section class="hero">
-            <!-- Obrázek na pozadí bude řešen přes CSS -->
-        </section>
-
-        <!-- 2. Textová sekce -->
-        <section class="text-section">
+        <!-- 1. Titulek stránky -->
+        <section class="text-section page-title-section">
             <div class="text-container">
-                <h2>Zažijte Klid a Pohodu</h2>
+                <h1>Naše Pokoje</h1>
                 <p>
-                    V našem penzionu najdete útočiště před ruchem všedních dní. Nabízíme nejen komfortní ubytování, ale také nezapomenutelnou atmosféru, kde se tradice snoubí s moderním designem.
+                    Každý z našich pokojů vypráví jedinečný příběh inspirovaný krásou Pálavy a uměním místních vinařů. Nabízíme prostor pro odpočinek, kde se snoubí moderní design s přírodními materiály a citem pro detail. Vyberte si ten svůj a prožijte nezapomenutelné chvíle.
                 </p>
             </div>
         </section>
 
-        <!-- 3. Sekce galerie s obsahem a prokliky -->
-        <section class="gallery-section">
-            <div class="gallery-grid">
-                <div class="gallery-item">
-                    <a href="ubytovani.html">
-                        <img src="https://picsum.photos/seed/gallery1/800/1000" alt="Interiér pokoje v penzionu">
-                    </a>
-                    <div class="gallery-item-content">
-                        <h2><a href="ubytovani.html">Ubytování</a></h2>
-                        <p>Naše pokoje jsou navrženy s citem pro detail a vaši maximální pohodu. Spojujeme moderní komfort s prvky, které odrážejí krásu okolní Pálavy. Každý pokoj je jedinečným prostorem, kde můžete nerušeně relaxovat po dni plném objevování Mikulova a načerpat novou energii v srdci jižní Moravy.</p>
-                    </div>
+        <!-- 2. Seznam pokojů -->
+        <section class="room-list">
+            
+            <!-- Pokoj 1 -->
+            <div class="room-section">
+                <div class="room-image">
+                    <img src="https://picsum.photos/seed/room1/1200/900" alt="Fotografie pokoje Pálava">
                 </div>
-                <div class="gallery-item">
-                    <a href="vinoteka.html">
-                        <img src="https://picsum.photos/seed/gallery2/800/1000" alt="Láhev vína a skleničky">
-                    </a>
-                    <div class="gallery-item-content">
-                        <h2><a href="vinoteka.html">Vinotéka</a></h2>
-                        <p>Vstupte do světa moravských vín v naší pečlivě zásobené vinotéce. Nabízíme exkluzivní výběr od malých lokálních vinařů, jejichž příběhy a lásku k řemeslu najdete v každé lahvi. Rádi vám poradíme s výběrem vína pro speciální příležitost i pro chvíle pohody. Objevujte s námi to nejlepší z regionu.</p>
-                    </div>
-                </div>
-                <div class="gallery-item">
-                    <a href="degustace.html">
-                        <img src="https://picsum.photos/seed/gallery3/800/1000" alt="Skupina lidí při degustaci vína">
-                    </a>
-                    <div class="gallery-item-content">
-                        <h2><a href="degustace.html">Degustace</a></h2>
-                        <p>Ponořte se do tajů vinařského umění s našimi řízenými degustacemi. Nechte se provést rozmanitostí chutí a vůní, které Pálava otiskla do svých vín. K dokonalému zážitku patří i párování s lokálními delikatesami, které podtrhnou charakter každého vzorku. Strávte ideální večer s přáteli a odneste si nezapomenutelné vzpomínky.</p>
-                    </div>
+                <div class="room-description">
+                    <h3>Rodinný pokoj s terasou</h3>
+                    <p>Prostorný a světlý pokoj s přímým výhledem na pálavské vrchy. Ranní káva na balkóně s touto scenérií se stane vaším oblíbeným rituálem. Interiér je laděn do světlých tónů dřeva a kamene, které doplňují minimalistické doplňky a vytvářejí vzdušnou, uklidňující atmosféru. Ideální volba pro ty, kteří hledají klid a spojení s přírodou.</p>
+                    <ul class="room-features">
+                        <li>Manželská postel King Size</li>
+                        <li>Balkon s posezením a výhledem</li>
+                        <li>Vysokorychlostní Wi-Fi zdarma</li>
+                        <li>Kávovar a výběr čajů</li>
+                    </ul>
+                    <a href="#" class="button">Rezervovat pokoj</a>
                 </div>
             </div>
+
+            <!-- Pokoj 2 -->
+            <div class="room-section">
+                <div class="room-image">
+                    <img src="https://picsum.photos/seed/room2/1200/900" alt="Fotografie pokoje Ryzlink">
+                </div>
+                <div class="room-description">
+                    <h3>Pokojik s balkónem</h3>
+                    <p>Útulný podkrovní pokoj, který si vás získá svou intimitou a originálním designem s odhalenými trámy. Jeho příjemnou atmosfíééru dotváří balkén s výhleem na zámek. Tmavší dřevo a kovové prvky vytváří elegantní kontrast, který je ideální pro romantický pobyt ve dvou nebo soustředěnou práci.</p>
+                    <ul class="room-features">
+                        <li>Manželská postel Queen Size</li>
+                        <li>Pracovní stůl a křeslo</li>
+                        <li>Vysokorychlostní Wi-Fi zdarma</li>
+                        <li>Minibar s výběrem lokálních vín</li>
+                    </ul>
+                    <a href="#" class="button">Rezervovat pokoj</a>
+                </div>
+            </div>
+
         </section>
     </main>
 
