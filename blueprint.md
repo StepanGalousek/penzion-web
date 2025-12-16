@@ -1,36 +1,68 @@
-#Blueprint: Web Penzionu (verze 12.0)
 
-## Přehled
+# Blueprint: Web Penzionu "Zelený Domeček Mikulov"
 
-Tento dokument popisuje vytvoření nové webové prezentace od nuly. Cílem je moderní, minimalistický a luxusní design inspirovaný webem `meziplutky.cz`. Projekt bude postaven na framework-less základu (HTML, CSS, JavaScript) pro maximální rychlost a čistotu kódu.
+## 1. Přehled Projektu
 
-## Klíčové prvky designu
+Cílem tohoto projektu je vytvořit moderní, elegantní a responzivní webovou prezentaci pro rodinný penzion "Zelený Domeček Mikulov". Web slouží jako hlavní online vizitka, která má za úkol přilákat nové zákazníky, informovat o nabízených službách (ubytování, vinotéka, degustace) a poskytnout snadný způsob, jak penzion kontaktovat.
 
-*   **Vizuální styl:** Čistý, vzdušný, s důrazem na typografii, kvalitní fotografie a "whitespace".
-*   **Barevná paleta:**
-    *   **Primární barva:** Bílá (`#fdfdfd`).
-    *   **Sekundární (akcentová) barva:** Elegantní zelená (`#5A7C49`). Používá se pro nadpisy, patičku a CTA tlačítka.
-    *   **Text:** Tmavě šedá (`#333333`) a bílá (`#ffffff`).
-*   **Typografie:**
-    *   **Nadpisy:** Elegantní patkový font (Playfair Display).
-    *   **Text & Menu:** Moderní bezpatkový font (Montserrat).
-*   **Responzivita:** Plně responzivní design pro perfektní zobrazení na mobilech i desktopech.
+Důraz je kladen na vizuální stránku, která má reflektovat klidnou a pohodovou atmosféru penzionu a krásu jihomoravské krajiny, a na bezchybnou funkčnost na všech zařízeních (desktop, tablet, mobil).
 
----
+## 2. Implementované Funkce a Design
 
-## Plán implementace
+### Základní Struktura a Design
 
-### Fáze 1-11 (Dokončeno)
+- **Písma:**
+  - Nadpisy: `Playfair Display` (serif) - pro eleganci a tradiční nádech.
+  - Běžný text: `Montserrat` (sans-serif) - pro moderní vzhled a vynikající čitelnost.
+- **Barevná Paleta:**
+  - Hlavní akcentní barva: `#5A7C49` (elegantní zelená).
+  - Text: Tmavě šedá (`#333333`) na světlém pozadí, bílá (`#ffffff`) na tmavém pozadí.
+  - Pozadí: Téměř bílá (`#fdfdfd`).
+- **Layout:** Responzivní design postavený na moderních CSS technikách (Grid, Flexbox), který se automaticky přizpůsobuje různým velikostem obrazovky.
 
-*   Základní struktura, navigace, redesign menu, obsah hlavní stránky, oprava chyb, prokliky, vytvoření a sjednocení podstránek, oprava zobrazení hlavičky, implementace patičky a dokončení stránky kontaktů.
+### Klíčové Komponenty a Funkce
 
-### Fáze 12: Sjednocení barevného schématu
+1.  **Hlavička a Navigace (`<header>`):
+    - **Fixní pozice:** Menu je neustále viditelné při rolování stránkou.
+    - **Dynamická změna vzhledu:**
+        - Nad úvodní `hero` sekcí je menu průhledné s bílým textem.
+        - Po odrolování níže se automaticky mění na pevnou bílou lištu s černým textem pro zajištění čitelnosti. Tato funkce je řízena JavaScriptem, který sleduje pozici scrollbaru.
+    - **Responzivní menu:** Na mobilních zařízeních se navigační odkazy schovají pod tlačítko "Menu", které po kliknutí plynule zobrazí a skryje plnohodnotnou navigaci.
 
-1.  **Cíl:** Aplikovat novou sjednocenou barevnou paletu napříč celým webem pro konzistentní a profesionální vzhled.
-2.  **Kroky:**
-    *   **Upravit `style.css`:**
-        *   V `:root` aktualizovat proměnnou `--color-accent` na hodnotu `#5A7C49`.
-        *   Změnit barvu pozadí patičky (`.site-footer-main`) na `var(--color-accent)`.
-        *   Aplikovat `var(--color-accent)` na všechny hlavní nadpisy (`h1`, `h2`, `h3`) v obsahu (`main`).
-        *   **Upravit barvu CTA tlačítek (`.button`) na `var(--color-accent)` a přizpůsobit `:hover` stav.**
-        *   Upravit `:hover` stav odkazů v patičce pro zajištění kontrastu.
+2.  **Úvodní Sekce (`.hero`):
+    - **Výška:** Nastavena na `70vh` (70 % výšky obrazovky) jako kompromis mezi vizuálním dopadem a správným zobrazením kompozice fotografie.
+    - **Filmová Animace Přiblížení:**
+        - Obrázek se po dobu 20 sekund plynule zvětšuje o 5 % (`transform: scale(1.05)`).
+        - Animace je nastavena tak, aby po dokončení zůstala v konečném (přiblíženém) stavu (`animation-fill-mode: forwards`).
+    - **Zarovnání obrázku:** Vlastnost `object-fit: cover` zajišťuje, že obrázek vždy vyplní prostor sekce bez deformace. `object-position: center` garantuje, že se obrázek bude vždy soustředit na svůj střed.
+    - **Překryv:** Jemný tmavý překryv (`rgba(0, 0, 0, 0.2)`) zajišťuje, že bílý text v navigaci je vždy dobře čitelný.
+
+3.  **Galerie Služeb (`.gallery-section`):
+    - **Interaktivní Efekt při Najetí Myší:**
+        - Při najetí myší na obrázek se tento plynule zvětší (`transform: scale(1.05)`).
+        - Současně se obrázek lehce projasní (`filter: brightness(1.1)`).
+        - Efekt je plynulý díky `transition` vlastnosti.
+    - **Struktura:** Třísloupcová mřížka na desktopu, která se na mobilních zařízeních automaticky mění na jednosloupcovou pro lepší čitelnost.
+
+### Podstránky
+
+- Vytvořeny základní HTML soubory pro všechny podstránky (`index.html`, `ubytovani.html`, `vinoteka.html`, `degustace.html`, `kontakty.html`) pro zajištění funkční navigace.
+
+## 3. Plán Poslední Změny (Oprava Ořezu Hero Obrázku)
+
+**Problém:**
+Úvodní obrázek v `hero` sekci byl příliš přiblížený a oříznutý. Místo celé scény s kostelem byl vidět pouze jeho detail, což neodpovídalo původnímu záměru.
+
+**Příčina:**
+Kombinace vlastností `height: 100vh` a `object-fit: cover` nutila prohlížeč obrázek nepřirozeně zvětšit, aby vyplnil celou výšku obrazovky, což vedlo k masivnímu ořezu.
+
+**Řešení (Iterativní postup):**
+
+1.  **První pokus:** Snížení síly animačního přiblížení z `scale(1.15)` na `scale(1.05)`. Ukázalo se jako nedostatečné.
+2.  **Druhý pokus:** Deaktivace animace a snížení výšky `hero` sekce na `85vh`. To problém zmírnilo, ale ořez byl stále příliš velký.
+3.  **Finální řešení:**
+    - Výška `hero` sekce byla snížena na `70vh`. Tím se změnil poměr stran kontejneru a `object-fit: cover` již nemusí obrázek tolik zvětšovat.
+    - Byla znovu aktivována jemná animace přiblížení (`scale(1.05)`), která dodává dynamiku bez negativního dopadu na kompozici.
+
+**Výsledek:**
+Úvodní sekce nyní zobrazuje podstatně větší část fotografie (včetně celého kostela) a zároveň si zachovává moderní a elegantní vzhled s jemným pohybovým efektem.

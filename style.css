@@ -20,11 +20,39 @@ body {
     line-height: 1.6;
 }
 
+main {
+    position: relative;
+    z-index: 2;
+    background-color: var(--color-background);
+}
+
 /* --- Nadpisy --- */
 main h1, main h2, main h3 {
     color: var(--color-accent);
 }
 
+/* --- Hero sekce s animací přiblížení --- */
+.hero {
+    height: 70vh; /* Finální snížení výšky pro lepší kompozici */
+    position: relative; 
+    overflow: hidden; /* Ořízne zvětšený obrázek */
+}
+
+.hero::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-color: rgba(0, 0, 0, 0.2);
+    z-index: 1; /* Umístí překryv nad obrázek */
+}
+
+.zooming-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* Zajistí centrování obrázku */
+  animation: slowZoom 20s forwards;
+}
 
 /* --- Navigace --- */
 .site-header {
@@ -33,7 +61,7 @@ main h1, main h2, main h3 {
     left: 0;
     width: 100%;
     padding: 2rem 3rem;
-    z-index: 100;
+    z-index: 100; /* Zůstane nad vším */
     background-color: var(--header-bg);
     transition: background-color 0.4s ease;
 }
@@ -49,7 +77,7 @@ main h1, main h2, main h3 {
 
 .site-header--solid .logo,
 .site-header--solid .menu-toggle {
-    color: var(--header-text-open);
+    color: var(--color-text-open);
 }
 
 .nav-container {
@@ -122,15 +150,68 @@ main h1, main h2, main h3 {
 .dropdown-menu a { color: var(--header-text-open); text-decoration: none; text-transform: uppercase; margin: 0 1.5rem; transition: opacity 0.3s ease; }
 .dropdown-menu a:hover { opacity: 0.7; }
 
-/* --- Obecné třídy --- */
-.hero{height:100vh;background:linear-gradient(rgba(0,0,0,.2),rgba(0,0,0,.2)),url(https://picsum.photos/seed/main-hero/1920/1280) no-repeat center center/cover}
+/* --- Obecné třídy pro obsah --- */
 .text-section{padding:8rem 2rem;text-align:center}
 .page-title-section{padding-top:10rem}
 .text-container{max-width:650px;margin:0 auto}
 .text-section h1,.text-section h2{font-family:var(--font-serif);font-size:3.5rem;font-weight:700;margin-bottom:1.5rem}
 .text-section p{font-size:1.1rem;line-height:1.8}
-.gallery-section{padding:2rem 3rem 6rem}.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}.gallery-item img{width:100%;height:auto;object-fit:cover;display:block;margin-bottom:2rem}.gallery-item a{display:block;text-decoration:none}.gallery-item-content{text-align:center;padding:0 1rem}.gallery-item-content h2{font-family:var(--font-serif);font-size:2.2rem;font-weight:700;margin-bottom:1rem}.gallery-item-content h2 a{text-decoration:none;color:inherit}.gallery-item-content p{font-size:1rem;line-height:1.7;max-width:450px;margin-left:auto;margin-right:auto;color:var(--color-text-dark)}
-.room-list{padding:0 3rem 6rem}.room-section{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:6rem}.room-section:nth-child(even) .room-image{order:2}.room-image img{width:100%;height:auto;display:block}.room-description h3{font-family:var(--font-serif);font-size:2.8rem;font-weight:700;margin-bottom:1.5rem}.room-description p{font-size:1rem;line-height:1.8;margin-bottom:2rem}.room-features{list-style:none;padding:0;margin:0 0 2.5rem}.room-features li{font-size:1rem;margin-bottom:.8rem;padding-left:2rem;position:relative}.room-features li::before{content:'\2713';position:absolute;left:0;top:0;color: var(--color-accent);font-weight:700}
+
+/* --- Sekce Galerie --- */
+.gallery-section { padding: 2rem 20% 6rem; }
+.gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:2.5rem}
+.gallery-item a{display:block;text-decoration:none; overflow: hidden;}
+.gallery-item img{
+    width:100%;
+    height:auto;
+    object-fit:cover;
+    display:block;
+    margin-bottom:2rem;
+    transition: transform 0.4s ease, filter 0.4s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05);
+    filter: brightness(1.1);
+}
+
+.gallery-item-content{text-align:center;padding:0 1rem}
+.gallery-item-content h2{font-family:var(--font-serif);font-size:2.2rem;font-weight:700;margin-bottom:1rem}
+.gallery-item-content h2 a{
+    text-decoration:none;
+    color:inherit;
+    display: inline-block; /* Zajistí správné chování */
+}
+
+/* Nová šipka vedle nadpisu galerie */
+.gallery-item-content h2 a::after {
+    content: '\2192'; /* Unicode pro šipku doprava */
+    display: inline-block;
+    color: var(--color-accent);
+    margin-left: 0.5rem;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+/* Zobrazení šipky při najetí myší na celý prvek galerie */
+.gallery-item:hover .gallery-item-content h2 a::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.gallery-item-content p{font-size:1rem;line-height:1.7;max-width:450px;margin-left:auto;margin-right:auto;color:var(--color-text-dark)}
+
+/* --- Seznam pokojů --- */
+.room-list{padding:0 3rem 6rem}
+.room-section{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;margin-bottom:6rem}
+.room-section:nth-child(even) .room-image{order:2}
+.room-image img{width:100%;height:auto;display:block}
+.room-description h3{font-family:var(--font-serif);font-size:2.8rem;font-weight:700;margin-bottom:1.5rem}
+.room-description p{font-size:1rem;line-height:1.8;margin-bottom:2rem}
+.room-features{list-style:none;padding:0;margin:0 0 2.5rem}
+.room-features li{font-size:1rem;margin-bottom:.8rem;padding-left:2rem;position:relative}
+.room-features li::before{content:'\2713';position:absolute;left:0;top:0;color: var(--color-accent);font-weight:700}
 
 /* --- Tlačítka --- */
 .button {
@@ -181,6 +262,16 @@ main h1, main h2, main h3 {
 .social-icons a { font-size: 1.4rem; }
 .footer-bottom { text-align: center; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2); font-size: 0.8rem; color: #e0e0e0; }
 
+/* --- Animace --- */
+@keyframes slowZoom {
+  0% {
+    transform: scale(1);
+  }
+  100% {
+    transform: scale(1.05); /* Jemné přiblížení */
+  }
+}
+
 /* --- Responzivní Design --- */
 @media (max-width: 992px) {
     .gallery-grid { grid-template-columns: 1fr; gap: 4rem; }
@@ -203,4 +294,5 @@ main h1, main h2, main h3 {
     .footer-container { grid-template-columns: 1fr; text-align: center; }
     .social-icons { justify-content: center; }
     .contact-section { padding: 0 1.5rem 4rem; }
+    .gallery-section { padding: 2rem 5% 6rem; } /* Menší okraj pro mobilní zařízení */
 }
